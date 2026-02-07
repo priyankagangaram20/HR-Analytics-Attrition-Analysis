@@ -1,0 +1,6 @@
+SELECT
+    attrition,
+    ROUND(AVG(yearsatcompany), 1) AS avg_years_at_company,
+    ROUND(AVG(monthlyincome), 0) AS avg_monthly_income
+FROM hr_data
+GROUP BY attrition;

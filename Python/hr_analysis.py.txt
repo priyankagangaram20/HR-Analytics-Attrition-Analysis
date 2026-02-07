@@ -1,0 +1,16 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("../data/hr_data.csv")
+
+attrition_dept = (
+    df.groupby("Department")["Attrition"]
+      .value_counts(normalize=True)
+      .unstack()
+      .fillna(0) * 100
+)
+
+attrition_dept["Yes"].sort_values().plot(kind="barh")
+plt.title("Attrition Rate by Department")
+plt.xlabel("Attrition Percentage")
+plt.show()
